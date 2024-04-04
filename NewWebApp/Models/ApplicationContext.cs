@@ -4,11 +4,12 @@ namespace NewWebApp.Models
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext()
-        {
+        public ApplicationContext(DbContextOptions<ApplicationContext> options)
+        : base(options)
+        { 
             Database.EnsureCreated();
         }
-        public DbSet<News> News { get; set; }
+        public DbSet<News> News { get; set; } = null!;//данное свойство в принципе не будет иметь значение null
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

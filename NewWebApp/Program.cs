@@ -1,7 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using NewWebApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// получаем строку подключения из файла конфигурации
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// добавляем контекст ApplicationContext в качестве сервиса в приложение
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<NewsRepository>();
 
 var app = builder.Build();
 
@@ -20,8 +32,12 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+//app.MapGet("/", (ApplicationContext db) => db.News.ToList());
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}",
+	(ApplicationContext db) => db.News.ToList()
+	);
 
 app.Run();

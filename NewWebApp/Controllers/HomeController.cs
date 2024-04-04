@@ -8,9 +8,12 @@ namespace NewWebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly NewsRepository NewsRepository;
+
+        public HomeController(ILogger<HomeController> logger, NewsRepository NewsRepository)
         {
             _logger = logger;
+            this.NewsRepository = NewsRepository;   
         }
 
         public IActionResult Index()
@@ -22,9 +25,10 @@ namespace NewWebApp.Controllers
         {
             return View();
         }
-        public IActionResult News()
+        public IActionResult News(Guid id)
         {
-            return View();
+            var model = NewsRepository.GetArticles();
+            return View(model);
         }
         public IActionResult Contact()
         {
