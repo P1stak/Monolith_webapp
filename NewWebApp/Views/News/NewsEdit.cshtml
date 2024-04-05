@@ -1,0 +1,35 @@
+﻿@model News
+<div>
+    <h1 style="margin-top: 70px; text-align: center">Редактировать статью</h1>
+    <div>
+        <form asp-controller="News" asp-action="NewsEdit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+@*             <input type="hidden" asp-for="TitleImagePath" />
+            <div asp-validation-summary="All"></div> *@
+
+            <div style="text-align: center">
+                <label asp-for="Title"></label>
+                <input maxlength="25" asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div style="text-align: center">
+                <label asp-for="Text"></label>
+                <textarea asp-for="Text"></textarea>
+                <span asp-validation-for="Text"></span>
+            </div>
+
+            <div style="text-align: center;">
+                <label asp-for="Data" style="align-items: center;"></label>
+                @{
+                    var currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+                }
+
+                <input type="date" asp-for="Data" value="@currentDate" min="2024-01-01" max="2032-01-01" />
+                <span asp-validation-for="Data"></span>
+            </div>
+            <div style="text-align: center; margin-bottom: 10px">
+                <input type="submit" value="Сохранить" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -16,7 +16,7 @@ namespace NewWebApp.Models
         public string Text { get; set; }
 
         [Display(Name = "Титульная картинка")]
-        public virtual string TitleImagePath { get; set; }
+        public string? TitleImagePath { get; set; }
 
         [Display(Name = "Дата и время")]
         public DateTime Data { get; set; }
