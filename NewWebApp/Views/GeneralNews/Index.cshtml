@@ -6,11 +6,9 @@
 			<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
 		</header>
 		<div class="row">
-			<div style="margin-bottom: 20px">
-				<a asp-controller="News" asp-action="NewsEdit" style="font-weight: bold; border: solid 3px blue; border-radius: 10px; padding: 3px 6px;">НОВАЯ СТАТЬЯ</a>
-			</div>
-		@foreach (News entity in Model)
-		{
+			
+			@foreach (News entity in Model)
+			{
 
 				<div class="col-4 col-6-medium col-12-small">
 					<article class="box style2">
@@ -21,23 +19,11 @@
 								@entity.Title
 							</a>
 						</h3>
-
 						<p>@entity.Text</p>
 						<h4>@entity.Data.ToShortDateString()</h4>
-
-						<div style="margin-bottom: 5px">
-							|
-							<a asp-controller="News" asp-action="NewsEdit" asp-route-id="@entity.Id">Редактировать</a>
-							|
-						</div>
-						<form method="post" asp-controller="News" asp-action="NewsDelete" style="margin-bottom: 20px">
-							<input type="hidden" name="Id" value="@entity.Id" />
-							<input type="submit" value="удалить" />
-						</form>
-									
 					</article>
 				</div>
-		}
+			}
 		</div>
 	</div>
 </article>
