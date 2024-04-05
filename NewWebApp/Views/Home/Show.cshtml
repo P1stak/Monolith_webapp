@@ -1,0 +1,14 @@
+﻿@model News
+
+<div>
+    <h2>
+        @Model.Title
+    </h2>
+</div>
+<div>
+    @Html.Raw(Model.Text)
+</div>
+
+<div>
+    <img class="img-block" src="/@Model.TitleImagePath" />
+</div>
