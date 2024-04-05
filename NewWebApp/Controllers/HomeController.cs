@@ -28,14 +28,21 @@ namespace NewWebApp.Controllers
         public IActionResult News(Guid id)
         {
             var model = NewsRepository.GetArticles();
-            return View(model);
-        }
-        public IActionResult Contact()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            if (id != default)
+            {
+                return View("Show", NewsRepository.GetArticleById(id));
+            }
+
+            return View(model);
+
+        }
+		public IActionResult Admin()
+		{
+			return View();
+		}
+
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

@@ -11,9 +11,16 @@
 
 				<div class="col-4 col-6-medium col-12-small">
 					<article class="box style2">
-						<a href="#" class="image featured"><img src="~/images/pic01.jpg" alt="" /></a>
-						<h3><a href="#">@entity.Title</a></h3>
+						<a href="#" class="image featured"><img src="@entity.TitleImagePath" alt=""/></a>
+
+						<h3>
+							<a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@entity.Id">
+								@entity.Title
+							</a>
+						</h3>
 						<p>@entity.Text</p>
+						<p>@entity.Data</p>
+									
 					</article>
 				</div>
 		}
