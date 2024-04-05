@@ -25,18 +25,6 @@ namespace NewWebApp.Controllers
         {
             return View();
         }
-        public IActionResult News(Guid id)
-        {
-            var model = NewsRepository.GetArticles();
-
-            if (id != default)
-            {
-                return View("Show", NewsRepository.GetArticleById(id));
-            }
-
-            return View(model);
-
-        }
 		public IActionResult Admin()
 		{
 			return View();
