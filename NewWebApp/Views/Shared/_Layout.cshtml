@@ -16,7 +16,17 @@
                 <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
 				<li><a asp-area="" asp-controller="GeneralNews" asp-action="Index">News</a></li>
-                <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
+				@if (User.Identity.IsAuthenticated)
+				{
+					<li><a asp-area="" asp-controller="Home" asp-action="Profile">Profile</a></li>
+					<li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
+				}
+				else
+				{
+					<li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+					<li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+				}
+
             </ul>
         </nav>
     </header>

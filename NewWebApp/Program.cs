@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NewWebApp.Models;
 
@@ -9,6 +10,8 @@ string connection = builder.Configuration.GetConnectionString("DefaultConnection
 // добавляем контекст ApplicationContext в качестве сервиса в приложение
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
 
+builder.Services.AddIdentity<User, IdentityRole>()
+               .AddEntityFrameworkStores<ApplicationContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -29,6 +32,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();    // подключение аутентификации
 
 app.UseAuthorization();
 

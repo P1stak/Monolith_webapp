@@ -20,8 +20,11 @@ namespace NewWebApp.Controllers
         {
             return View();
         }
-
-        public IActionResult About()
+		public IActionResult Profile()
+		{
+			return View();
+		}
+		public IActionResult About()
         {
             return View();
         }

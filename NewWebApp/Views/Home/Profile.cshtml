@@ -1,0 +1,19 @@
+﻿
+<article id="work" class="wrapper style2">
+	<div class="container">
+		<header>
+			<h2>My Profile</h2>
+		</header>
+		<div class="row aln-center">
+			<p>@User.Identity.Name</p>
+
+			<form method="post" asp-controller="Account" asp-action="Logout">
+				<input type="submit" value="Выход" />
+			</form>
+		</div>
+		<footer>
+			<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
+			<a href="#portfolio" class="button large scrolly">See some of my recent work</a>
+		</footer>
+	</div>
+</article>
