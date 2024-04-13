@@ -8,5 +8,20 @@
 			<a class="button scrolly" asp-controller="News" asp-action="Index" asp-route-id="">Новости сайта</a>
 
 		</div>
+		<br>
+		@* <p>@User.Identity.Name</p> *@
+
+		<div class="row aln-center">
+			<a class="button scrolly" asp-controller="Roles" asp-action="Index" asp-route-id="">Роли</a>
+		</div>
+		<br>
+		<div class="row aln-center">
+			<a class="button scrolly" asp-controller="Roles" asp-action="UserList" asp-route-id="">Список пользователей</a>
+		</div>
+		<br>
+
+		<form method="post" asp-controller="Account" asp-action="Logout">
+			<input type="submit" value="Выход" />
+		</form>
 	</div>
 </article>

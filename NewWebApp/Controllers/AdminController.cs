@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NewWebApp.Models;
 using System.Diagnostics;
 
 namespace NewWebApp.Controllers
 {
-	public class AdminController : Controller
+    [Authorize(Roles = "admin")]
+    public class AdminController : Controller
 	{
 		private readonly NewsRepository NewsRepository;
 

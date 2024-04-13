@@ -18,8 +18,15 @@
 				<li><a asp-area="" asp-controller="GeneralNews" asp-action="Index">News</a></li>
 				@if (User.Identity.IsAuthenticated)
 				{
-					<li><a asp-area="" asp-controller="Home" asp-action="Profile">Profile</a></li>
-					<li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
+				
+					if (User.IsInRole("admin"))
+					{
+						<li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
+					}
+					else
+					{
+						<li><a asp-area="" asp-controller="Home" asp-action="Profile">Profile</a></li>
+					}
 				}
 				else
 				{
