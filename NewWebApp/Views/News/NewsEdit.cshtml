@@ -4,8 +4,8 @@
     <div>
         <form asp-controller="News" asp-action="NewsEdit" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
-@*             <input type="hidden" asp-for="TitleImagePath" />
-            <div asp-validation-summary="All"></div> *@
+            @*             <input type="hidden" asp-for="TitleImagePath" />*@
+            <div asp-validation-summary="All"></div> 
 
             <div style="text-align: center">
                 <label asp-for="Title"></label>
@@ -16,6 +16,11 @@
                 <label asp-for="Text"></label>
                 <textarea asp-for="Text"></textarea>
                 <span asp-validation-for="Text"></span>
+            </div>
+            <div style="text-align: center">
+                <label asp-for="TitleImagePath"></label>
+                <input maxlength="100" asp-for="TitleImagePath" />
+                <span asp-validation-for="TitleImagePath"></span>
             </div>
 
             <div style="text-align: center;">
